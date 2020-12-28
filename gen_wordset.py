@@ -14,7 +14,7 @@ def main(args):
 
     meets = []
     for word in wordlist:
-        if all(l in letters_set for l in word) and any(l in contains_set for l in word):
+        if all(l in letters_set for l in word) and any(l in contains_set for l in word) and len(word) >= args.size:
             meets.append(word)
 
         if len(meets) >= args.number:
@@ -27,6 +27,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Generate a set of words")
     parser.add_argument("-n", "--number", default=100, type=int)
     parser.add_argument("-l", "--letters")
+    parser.add_argument("-s", "--size", default=100, type=int)
     parser.add_argument("-c", "--contains")
     args = parser.parse_args()
 
